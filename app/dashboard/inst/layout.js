@@ -1,13 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-const layout = ({ children }) => {
+
+const Layout = ({ children }) => {
     return (
-        <>
-            <nav>Navbar</nav>
-            <main>{children}</main>
-            <footer>Footer</footer>
-        </>
-    )
-}
+        <div className="flex h-screen bg-gray-100">
+            {/* Sidebar */}
+            <nav className="bg-gray-800 text-white w-64 h-full hidden md:block" > sidebar </nav>
 
-export default layout
+            {/* Main content area */}
+            <main className="flex-1 flex flex-col">
+                {/* Header */}
+                <section className="bg-white shadow-md p-4"> header </section>
+
+                {/* Main body content */}
+                <div className="flex-grow p-4 overflow-auto">
+                    {children}
+                </div>
+
+                {/* Footer */}
+                <footer className="bg-white shadow-md p-2" >footer</footer>
+            </main>
+        </div>
+    );
+};
+
+export default Layout;
