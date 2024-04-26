@@ -33,7 +33,7 @@ const InstSidebar = () => {
   const sidebarItems = [
     {
       name: "overview",
-      path: "/",
+      path: "",
       icon: <FaVectorSquare />,
     },
     {
