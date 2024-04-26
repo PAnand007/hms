@@ -82,21 +82,19 @@ const InstSidebar = () => {
         {sidebarItems.map((item, index) => (
           <li
             key={index}
-            className={`p-3 ${
-              !toggle && "mb-4"
-            } w-12 group hover:font-semibold ${
-              pathname === `/dashboard/inst/${item.path}`
-                ? "text-white"
-                : "text-[#C4C4C4]"
+            className={`p-3 ${!toggle && "mb-4"} w-12 hover:font-semibold ${
+              pathname === `/dashboard/inst${item.path}`
+                ? "text-white font-semibold scale-110"
+                : "text-[#c4c4c4]"
             } hover:text-white`}
           >
             {/* Sidebar item link */}
             <Link
               className="flex items-center capitalize group relative"
-              href={`/dashboard/inst/${item.path}`}
+              href={`/dashboard/inst${item.path}`}
             >
               {/* Sidebar item icon */}
-              <span className="mr-4 text-lg group-hover:scale-125 transition-all duration-300 ease-in-out">
+              <span className="mr-4 text-lg transition-all duration-300 ease-in-out">
                 {item.icon}
               </span>
               {/* Sidebar item name */}
