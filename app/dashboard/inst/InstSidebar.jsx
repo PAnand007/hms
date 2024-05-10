@@ -68,11 +68,11 @@ const InstSidebar = () => {
     },
   ];
 
+  // Get the current pathname
+  const pathname = usePathname();
+
   // Render sidebar items list
   const SidebarItemsList = () => {
-    // Get the current pathname
-    const pathname = usePathname();
-    console.log(pathname);
     return (
       <ul
         className={`pb-4 ${
@@ -126,13 +126,20 @@ const InstSidebar = () => {
   // Render settings link
   const HandleSettings = () => {
     return (
-      <div className={`${!toggle && "hidden md:block"}`}>
+      <div
+        className={`${!toggle && "hidden md:block"} group w-fit
+      ${
+        pathname === `/dashboard/inst/settings`
+          ? "text-white font-semibold scale-110"
+          : "text-[#c4c4c4]"
+      } hover:text-white`}
+      >
         <Link
           className="flex group relative capitalize border-t-2 border-slate-400 pt-6 pb-8 text-lg mt-4 hover:font-semibold"
           href="/dashboard/inst/settings"
         >
           {/* Settings icon */}
-          <span className="mr-4 pl-2 hover:scale-110 transition-all duration-150 ease-in-out">
+          <span className="mr-4 pl-2 group-hover:scale-110 transition-all duration-150 ease-in-out">
             <IoSettingsOutline size={24} />
           </span>
           {/* Settings name */}
