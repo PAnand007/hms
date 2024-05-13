@@ -4,9 +4,9 @@ import InstHeader from "./InstHeader";
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex bg-[#F6F8FB]">
+    <div className="flex max-h-screen bg-[#F6F8FB]">
       {/* Sidebar */}
-      <nav className=" text-white h-full">
+      <nav>
         <InstSidebar />
       </nav>
 
@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
         </header>
 
         {/* Main body content */}
-        <section className="flex-grow p-4 min-h-screen bg-[#fff] rounded-lg overflow-auto">
+        <section className="flex-grow p-4 h-screen bg-[#fff] rounded-xl overflow-hidden">
           {children}
         </section>
       </main>

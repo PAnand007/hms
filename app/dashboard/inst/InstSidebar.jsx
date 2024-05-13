@@ -17,6 +17,7 @@ import {
   FaAngleRight,
   FaAngleLeft,
 } from "react-icons/fa";
+import { GiNinjaHead } from "react-icons/gi";
 import { IoSettingsOutline } from "react-icons/io5";
 
 // Define the InstSidebar component
@@ -75,45 +76,46 @@ const InstSidebar = () => {
   const SidebarItemsList = () => {
     return (
       <ul
-        className={`pb-4 ${
-          toggle ? "pt-10 md:pt-28" : "pt-32 hidden md:block"
+        className={`md:pb-4 flex flex-col h-full pt-20 ${
+          toggle ? " gap-6" : " gap-4"
         } `}
       >
         {sidebarItems.map((item, index) => (
           <li
             key={index}
-            className={`p-3 ${!toggle && "mb-4"} w-12 hover:font-semibold ${
+            className={`${!toggle && "mb-4"} ${
               pathname === `/dashboard/inst${item.path}`
-                ? "text-white font-semibold scale-110"
-                : "text-[#c4c4c4]"
-            } hover:text-white`}
+                ? "text-[#2656C9] font-bold scale-110"
+                : "text-[#585757] scale-95"
+            } hover:text-[#2656C9] font-semibold`}
           >
             {/* Sidebar item link */}
             <Link
-              className="flex items-center capitalize group relative"
+              className="flex justify-items-start gap-3 items-center capitalize group relative"
               href={`/dashboard/inst${item.path}`}
             >
+              {pathname === `/dashboard/inst${item.path}` && (
+                <div
+                  className={`${
+                    toggle && "w-3.5"
+                  } h-8 border-r-8 border-[#2656C9] rounded-3xl absolute left-0 top-1/2 -translate-y-1/2`}
+                ></div>
+              )}
+
               {/* Sidebar item icon */}
-              <span className="mr-4 text-lg transition-all duration-300 ease-in-out">
-                {item.icon}
-              </span>
+              <span className="pl-5 md:pl-7">{item.icon}</span>
               {/* Sidebar item name */}
+              {toggle && <span>{item.name}</span>}
               {!toggle && (
                 <span
                   className="absolute -top-2 left-[100%] translate-x-[15%]  
                               z-20 origin-left scale-0 px-3 rounded-lg border 
-                              border-gray-300 bg-white py-2 text-sm font-bold
-                              shadow-md transition-all duration-300 ease-in-out text-black
+                              border-gray-300 bg-[#585757] py-2 text-sm font-bold
+                              shadow-md transition-all duration-300 ease-in-out text-[#ffffff]
                               group-hover:scale-100"
                 >
                   {item.name}
                   <div className="bg-inherit rotate-45 p-1.5 absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2"></div>
-                </span>
-              )}
-              {toggle && (
-                <span>
-                  {item.name}
-                  <div class=" hidden lg:block bg-white h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
                 </span>
               )}
             </Link>
@@ -127,35 +129,41 @@ const InstSidebar = () => {
   const HandleSettings = () => {
     return (
       <div
-        className={`${!toggle && "hidden md:block"} group w-fit
-      ${
-        pathname === `/dashboard/inst/settings`
-          ? "text-white font-semibold scale-110"
-          : "text-[#c4c4c4]"
-      } hover:text-white`}
+        className={`${
+          !toggle ? "w-[90%] mx-1" : "w-[80%] ml-4"
+        } group border-t-2 border-slate-400 mb-8 hidden md:block
+       `}
       >
         <Link
-          className="flex group relative capitalize border-t-2 border-slate-400 pt-6 pb-8 text-lg mt-4 hover:font-semibold"
+          className={`flex group relative capitalize pt-6 font-semibold ${
+            pathname === `/dashboard/inst/settings`
+              ? "text-[#2656C9] font-bold scale-110"
+              : "text-[#585757]"
+          } hover:text-[#2656C9]`}
           href="/dashboard/inst/settings"
         >
           {/* Settings icon */}
-          <span className="mr-4 pl-2 group-hover:scale-110 transition-all duration-150 ease-in-out">
+          <span
+            className={`mr-4 ${
+              !toggle && "mx-auto"
+            } group-focus:scale-110 transition-all duration-150 ease-in-out`}
+          >
             <IoSettingsOutline size={24} />
           </span>
           {/* Settings name */}
+          {toggle && <span>settings</span>}
           {!toggle && (
             <span
               className="absolute left-[100%] translate-x-[5%] -translate-y-2
                         z-20 origin-left scale-0 px-3 rounded-lg border 
-                        border-gray-300 bg-white py-2 text-sm font-bold
-                        shadow-md transition-all duration-300 ease-in-out text-black
+                        border-gray-300 bg-black py-2 text-sm font-bold
+                        shadow-md transition-all duration-300 ease-in-out text-white
                         group-hover:scale-100"
             >
               Settings
               <div className="bg-inherit rotate-45 p-1.5 absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2"></div>
             </span>
           )}
-          {toggle && <span>settings</span>}
         </Link>
       </div>
     );
@@ -164,17 +172,14 @@ const InstSidebar = () => {
   return (
     <div
       // Sidebar container styles
-      className={`fixed md:relative md:z-0 z-40 flex ${
-        !toggle && "-translate-x-8 md:translate-x-0"
-      } flex-col justify-evenly md:justify-between rounded-tr-xl border-r-2 border-gray-400
-                  transition-all duration-300 ease-in-out
-                  px-8 bg-white bg-opacity-5 min-h-screen`}
+      className={`fixed md:relative md:z-0 z-4 h-full md:h-screen flex flex-col justify-between bg-[#F6F8FB] ${
+        toggle ? "w-44" : "w-16"
+      }`}
     >
       {/* Toggle button */}
       <button
         onClick={handleToggle}
-        className={`absolute top-20 
-                    ${toggle ? "left-36 md:left-48" : "left-9 md:left-20 "} 
+        className={`absolute top-3 md:top-6 left-4 md:left-8
                     rounded-full bg-white hover:bg-slate-200 text-black
                     w-6 h-6 shadow-md
                     flex justify-center items-center`}
@@ -182,15 +187,16 @@ const InstSidebar = () => {
         {toggle ? <FaAngleLeft /> : <FaAngleRight />}
       </button>
 
+      <Link
+        className={`absolute top-3 md:top-5 left-16 md:left-28 text-black flex items-center gap-2 scale-150  `}
+        href={""}
+      >
+        <GiNinjaHead size={20} />
+        <span className="text-lg hidden md:block">Hostelbees</span>
+      </Link>
+
       {/* Sidebar items list */}
       <SidebarItemsList />
-
-      {/* Plan details section */}
-      {toggle && (
-        <section className="bg-black bg-opacity-25 text-center md:text-xl p-2 flex justify-center items-center md:p-10 w-28 h-28 md:w-40 md:h-40 rounded-xl cursor-default">
-          <p>Plan details</p>
-        </section>
-      )}
 
       {/* Settings link */}
       <HandleSettings />
