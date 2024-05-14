@@ -4,21 +4,23 @@ import InstHeader from "./InstHeader";
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex bg-gradient-to-tl min-h-screen from-[#33456C]  via-[#339FCF]  to-[#2A2C38]">
+    <div className="flex max-h-screen bg-[#F6F8FB]">
       {/* Sidebar */}
-      <nav className=" text-white h-full">
+      <nav>
         <InstSidebar />
       </nav>
 
       {/* Main content area */}
       <main className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="p-4">
+        <header>
           <InstHeader />
         </header>
 
         {/* Main body content */}
-        <section className="flex-grow p-4 overflow-auto">{children}</section>
+        <section className="flex-grow p-4 h-screen bg-[#fff] rounded-xl overflow-hidden">
+          {children}
+        </section>
       </main>
     </div>
   );
