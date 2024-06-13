@@ -151,15 +151,15 @@ const HandleRevenue = () => {
 
 const Overview = () => {
   return (
-    <div className="overview_container text-black cursor-default">
-      <div className="relative bg-[#f6f8fb] rounded-xl p-4 z-10">
+    <div className="overview_container text-black cursor-default my-16">
+      <div className="relative bg-[#f6f8fb] rounded-xl p-4 z-10 mx-16">
         <h1 className="text-2xl font-bold">Overview</h1>
         <p className="text-lg">This is the overview page.</p>
         <button className=" absolute top-2 right-4 scale-125 font-semibold ">
           x
         </button>
       </div>
-      <div className="my-4 flex flex-wrap justify-evenly gap-10">
+      <div className="my-4 flex flex-wrap  justify-around gap-10">
         <HandleGender />
         <HandleAdmission />
         <HandleRating />
