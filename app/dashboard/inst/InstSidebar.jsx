@@ -172,7 +172,7 @@ const InstSidebar = () => {
   return (
     <div
       // Sidebar container styles
-      className={`fixed md:relative md:z-0 z-4 h-full md:h-screen flex flex-col justify-between bg-[#F6F8FB] ${
+      className={`fixed md:relative z-40 h-full md:h-screen flex flex-col justify-between bg-[#F6F8FB] ${
         toggle ? "w-44" : "w-16"
       }`}
     >
