@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
         </header>
 
         {/* Main body content */}
-        <section className="flex-grow p-4 h-screen bg-[#fff] rounded-xl overflow-hidden">
+        <section className="flex-grow p-4 bg-[#fff] rounded-xl">
           {children}
         </section>
       </main>
